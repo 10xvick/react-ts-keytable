@@ -11,6 +11,22 @@ export const tdtemplate = {
           type="number"
           min={min}
           max={max}
+          
+          onKeyDown={(e) => {
+            KeyboardControl(e, 1, 1);
+          }}
+        />
+      </td>
+    );
+  },
+  Number_double: ({ min, max }) => {
+    // const [flag,setflag] = React.useState(false);
+    return (
+      <td colSpan={2}>
+        <input
+          type="number"
+          min={min}
+          max={max}
           onKeyDown={(e) => {
             KeyboardControl(e, 1, 1);
           }}
@@ -22,7 +38,8 @@ export const tdtemplate = {
     return (
       <React.Fragment>
         <td colSpan={2}>
-          <select className="text-align-e"
+          <select
+            className="text-align-e"
             onKeyDown={(e1) => {
               KeyboardControl(e1, 1, 1);
             }}
