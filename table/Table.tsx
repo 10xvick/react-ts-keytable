@@ -18,6 +18,28 @@ export const tdtemplate = {
       </td>
     );
   },
+  Select: ({ options }) => {
+    return (
+      <React.Fragment>
+        <td colSpan={2}>
+          <select className="text-align-e"
+            onKeyDown={(e1) => {
+              KeyboardControl(e1, 1, 1);
+            }}
+          >
+            <option hidden={true} selected>
+              {' '}
+            </option>
+            {options.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </td>
+      </React.Fragment>
+    );
+  },
   Number_select: ({ min, max, options }) => {
     const [num, setNum] = React.useState(false);
 
