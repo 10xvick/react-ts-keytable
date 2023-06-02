@@ -6,7 +6,7 @@ const todaysdate = new Date().toISOString().split('T')[0];
 
 const tabledata = {
   'Interest On': { template: tdtemplate.Select, prop: { options: ['day', 'month', 'year'] } },
-  'Date criteria': { template: tdtemplate.number, prop: { min: 0, max: 366 } },
+  'Date criteria': { template: tdtemplate.Number_double, prop: { min: 0, max: 366 } },
   'Starting Date': {
     template: tdtemplate.Date,
     prop: { min: '2022-01-01', max: todaysdate },

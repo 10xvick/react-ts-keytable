@@ -4,14 +4,13 @@ import { KeyboardControl } from '../utility/keyboardcontrols';
 export const tdtemplate = {
   label: (text) => <td>{text}</td>,
   number: ({ min, max }) => {
-    // const [flag,setflag] = React.useState(false);
     return (
       <td colSpan={2}>
         <input
           type="number"
           min={min}
           max={max}
-          
+          step="1"
           onKeyDown={(e) => {
             KeyboardControl(e, 1, 1);
           }}
@@ -20,13 +19,17 @@ export const tdtemplate = {
     );
   },
   Number_double: ({ min, max }) => {
-    // const [flag,setflag] = React.useState(false);
     return (
       <td colSpan={2}>
         <input
           type="number"
           min={min}
           max={max}
+          onChange={e=>{
+            const [whole,dec] = e.target.value.split('.');
+            if(dec?.length>2) 
+            e.target.value = whole+'.'+dec[0]+dec[dec.length-1];
+          }}
           onKeyDown={(e) => {
             KeyboardControl(e, 1, 1);
           }}
