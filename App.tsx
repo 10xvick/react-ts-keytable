@@ -2,11 +2,13 @@ import * as React from 'react';
 import './style.css';
 import Table, { tdtemplate } from './table/Table';
 
+const todaysdate = new Date().toISOString().split("T")[0];
+
 const tabledata = {
   'Interest On': { template: tdtemplate.number, prop: { min: 0, max: 366 } },
   'Date criteria': { template: tdtemplate.number, prop: { min: 0, max: 366 } },
-  'Starting Date': { template: tdtemplate.Date, prop: { min: 0, max: 366 } },
-  'Settlement Date': { template: tdtemplate.Date, prop: { min: 0, max: 366 } },
+  'Starting Date': { template: tdtemplate.Date, prop: { min:"2022-01-01" ,max:todaysdate } },
+  'Settlement Date': { template: tdtemplate.Date, prop: { min:"2022-01-01" ,max:todaysdate } },
   'Rate of interest': { template: tdtemplate.number, prop: { min: 0, max: 366 } },
   'Interest Period': {
     template: tdtemplate.Number_select,

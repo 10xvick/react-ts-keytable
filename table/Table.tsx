@@ -62,29 +62,11 @@ export const tdtemplate = {
     return (
       <td colSpan={2}>
         <input
-          type="text"
+          min={min}
+          max={max}
+          type="date"
           onKeyDown={(e) => {
-            const allowedKeys = [
-              '0',
-              '1',
-              '2',
-              '3',
-              '4',
-              '5',
-              '6',
-              '7',
-              '8',
-              '9',
-              '/',
-              'Enter',
-              'Backspace',
-            ];
-
-            if (!e.ctrlKey && allowedKeys.indexOf(e.key) == -1) {
-              // event.preventDefault();
-              return;
-            }
-            console.log(e.keyCode);
+            KeyboardControl(e, 1, 1);
           }}
         />
       </td>
