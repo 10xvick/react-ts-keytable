@@ -2,19 +2,23 @@ import * as React from 'react';
 import { KeyboardControl } from '../utility/keyboardcontrols';
 
 export const tdtemplate = {
-  label: (text) => <td>{text}</td>,
-  number: ({ min, max }) => {
+  Label: (text) => <td>{text}</td>,
+  Number: ({ min, max }) => {
     return (
       <td colSpan={2}>
         <input
           type="number"
           min={min}
           max={max}
-          step="1"
+          onChange={e=>{
+            const v = e.target.value;
+            e.target.value = v>max?max:v<min?min:v;
+          }}
           onKeyDown={(e) => {
+            if(e.key=='.' || e.key=='-') e.preventDefault();
             KeyboardControl(e, 1, 1);
           }}
-        />
+          />
       </td>
     );
   },
@@ -26,11 +30,14 @@ export const tdtemplate = {
           min={min}
           max={max}
           onChange={e=>{
-            const [whole,dec] = e.target.value.split('.');
+            const v = e.target.value;
+            e.target.value = v>max?max:v<min?min:v;
+            const [whole,dec] = v.split('.');
             if(dec?.length>2) 
             e.target.value = whole+'.'+dec[0]+dec[dec.length-1];
           }}
           onKeyDown={(e) => {
+            if(e.key=='-') e.preventDefault();
             KeyboardControl(e, 1, 1);
           }}
         />
@@ -60,7 +67,7 @@ export const tdtemplate = {
       </React.Fragment>
     );
   },
-  Number_select: ({ min, max, options }) => {
+  Number_select: ({ min, max, options,placeholder }) => {
     const [num, setNum] = React.useState(false);
 
     return (
@@ -77,7 +84,7 @@ export const tdtemplate = {
             }}
           />
           <div className={'every-text'}>
-            <span> Per </span>
+            <span> {placeholder} </span>
           </div>
         </td>
         <td>

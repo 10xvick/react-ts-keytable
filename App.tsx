@@ -16,14 +16,14 @@ const tabledata = {
     prop: { min: '2022-01-01', max: todaysdate },
   },
   'Rate of interest': {
-    template: tdtemplate.number,
+    template: tdtemplate.Number,
     prop: { min: 0, max: 366 },
   },
   'Interest Period': {
     template: tdtemplate.Number_select,
-    prop: { min: 0, max: 366, options: ['day', 'month', 'year'] },
+    prop: { min: 0, max: 366, options: ['day', 'month', 'year'], placeholder:'every' },
   },
-  'Period basis': { template: tdtemplate.number, prop: { min: 0, max: 366 } },
+  'Period basis': { template: tdtemplate.Number, prop: { min: 0, max: 366 } },
   // 'Int on balance': tdtemplate.number({min:0,max:366}),
   // 'Compounding period': tdtemplate.Number_select({min:0,max:366,options:['day','month','year']}),
 
