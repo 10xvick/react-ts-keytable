@@ -143,15 +143,18 @@ export default function Table({ data }) {
                 const table =
                   e.target.parentElement.parentElement.parentElement;
 
-                for (let row of table.rows) {
+                for (let j=0; j<table,.rows.length;j++) {
+                  const row = rows[j];
                   const key = row.children[0].innerText;
                   const value = [];
                   for (let i = 1; i < 3; i++) {
                     const input = row.children[i]?.firstChild;
-                    input != undefined && value.push(input);
+                    input != undefined && value.push(input.value);
                   }
                   data[key] = value;
                 }
+                delete data.Calculate;
+                console.log(data);
               }}
             >
               Calculate
