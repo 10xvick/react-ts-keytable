@@ -10,15 +10,15 @@ export const tdtemplate = {
           type="number"
           min={min}
           max={max}
-          onChange={e=>{
+          onChange={(e) => {
             const v = e.target.value;
-            e.target.value = v>max?max:v<min?min:v;
+            e.target.value = v > max ? max : v < min ? min : v;
           }}
           onKeyDown={(e) => {
-            if(e.key=='.' || e.key=='-') e.preventDefault();
+            if (e.key == '.' || e.key == '-') e.preventDefault();
             KeyboardControl(e, 1, 1);
           }}
-          />
+        />
       </td>
     );
   },
@@ -29,15 +29,15 @@ export const tdtemplate = {
           type="number"
           min={min}
           max={max}
-          onChange={e=>{
+          onChange={(e) => {
             const v = e.target.value;
-            e.target.value = v>max?max:v<min?min:v;
-            const [whole,dec] = v.split('.');
-            if(dec?.length>2) 
-            e.target.value = whole+'.'+dec[0]+dec[dec.length-1];
+            e.target.value = v > max ? max : v < min ? min : v;
+            const [whole, dec] = v.split('.');
+            if (dec?.length > 2)
+              e.target.value = whole + '.' + dec[0] + dec[dec.length - 1];
           }}
           onKeyDown={(e) => {
-            if(e.key=='-') e.preventDefault();
+            if (e.key == '-') e.preventDefault();
             KeyboardControl(e, 1, 1);
           }}
         />
@@ -67,7 +67,7 @@ export const tdtemplate = {
       </React.Fragment>
     );
   },
-  Number_select: ({ min, max, options,placeholder }) => {
+  Number_select: ({ min, max, options, placeholder }) => {
     const [num, setNum] = React.useState(false);
 
     return (
@@ -84,7 +84,7 @@ export const tdtemplate = {
             }}
           />
           <div className={'every-text'}>
-            <input value={placeholder}/>
+            <input defaultValue={placeholder} />
           </div>
         </td>
         <td>
@@ -135,6 +135,29 @@ export default function Table({ data }) {
             </tr>
           );
         })}
+        <tr>
+          <td className="calc-btn" colSpan="3">
+            <button
+              onClick={(e) => {
+                const data = {};
+                const table =
+                  e.target.parentElement.parentElement.parentElement;
+
+                for (let row of table.rows) {
+                  const key = row.children[0].innerText;
+                  const value = [];
+                  for (let i = 1; i < 3; i++) {
+                    const input = row.children[i]?.firstChild;
+                    input != undefined && value.push(input);
+                  }
+                  data[key] = value;
+                }
+              }}
+            >
+              Calculate
+            </button>
+          </td>
+        </tr>
       </table>
     </div>
   );

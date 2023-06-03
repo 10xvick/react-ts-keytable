@@ -43,6 +43,11 @@ input[value='1']:not(:focus) {
   /* display: none; */
 }
 
+table td.calc-btn{
+  text-align: center;
+  border-left: 1px solid!important;
+}
+
 table td input:focus,
 table td select:focus {
   outline: none;
@@ -112,3 +117,5 @@ input[type='date'] {
 .text-align-e{
   text-align: end;
 }
+
+
