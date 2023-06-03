@@ -1,11 +1,11 @@
-const tb = [0, 8];
+const tb = [0, 12];
 export function KeyboardControl(e, l, r) {
   if (e.keyCode != 13) return;
-  
+
   const [t, b] = tb;
 
   function focus(element) {
-    if(!element) return;
+    if (!element) return;
     element.focus();
     element.select && element.select();
   }

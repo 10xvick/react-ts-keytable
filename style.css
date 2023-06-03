@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 table {
@@ -54,6 +55,10 @@ table td select:focus {
 
 .every-text {
   display: none;
+  pointer-events: none;
+}
+.every-text>input{
+  background: none;
 }
 
 .every ~ .every-text {

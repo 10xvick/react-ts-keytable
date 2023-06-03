@@ -84,7 +84,7 @@ export const tdtemplate = {
             }}
           />
           <div className={'every-text'}>
-            <span> {placeholder} </span>
+            <input value={placeholder}/>
           </div>
         </td>
         <td>
