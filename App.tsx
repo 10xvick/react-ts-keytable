@@ -5,8 +5,8 @@ import Table, { tdtemplate } from './table/Table';
 const todaysdate = new Date().toISOString().split('T')[0];
 
 const tabledata = {
-  'Interest On': { template: tdtemplate.Select, prop: { options: ['day', 'month', 'year'] } },
-  'Date criteria': { template: tdtemplate.Number_double, prop: { min: 0, max: 366 } },
+  'Interest On': { template: tdtemplate.Select, prop: { options: ['Selected date', 'Selected parties', 'Quick interest'] } },
+  'Date criteria': { template: tdtemplate.Select, prop: { options: ['Tran. date', 'Value date'] } },
   'Starting Date': {
     template: tdtemplate.Date,
     prop: { min: '2022-01-01', max: todaysdate },
@@ -21,16 +21,18 @@ const tabledata = {
   },
   'Interest Period': {
     template: tdtemplate.Number_select,
-    prop: { min: 0, max: 366, options: ['day', 'month', 'year'], placeholder:'every' },
+    prop: { min: 0, max: 366, options: ['day', 'month', 'year'], placeholder:'per' },
   },
-  'Period basis': { template: tdtemplate.Number, prop: { min: 0, max: 366 } },
-  // 'Int on balance': tdtemplate.number({min:0,max:366}),
-  // 'Compounding period': tdtemplate.Number_select({min:0,max:366,options:['day','month','year']}),
+  'Period basis':{ template: tdtemplate.Select, prop: { options: ['days','months','years'] } },
+  'Int on balance': { template: tdtemplate.Select, prop: { options: ['all','debit only','crdit only'] } },
+  'Compounding period':{ template: tdtemplate.Number_select, prop:{min:0,max:366,options:['day','month','year'],placeholder:'Per'}},
+  
+  'Compounding from': {template: tdtemplate.Date,
+  prop: { min: '2022-01-01', max: todaysdate }},
+  'Rounding method':{ template: tdtemplate.Select, prop: { options: ['decimal Rounding','Nearest Multiple'] } },
+  'Int Paymenet Period':{ template: tdtemplate.Number_select, prop:{min:0,max:366,options:['day','month','year'],placeholder:'Every'}}
 
-  // 'Compounding from': tdtemplate.Number_select({min:0,max:366,options:['day','month','year']}),
-  // 'Rounding method': tdtemplate.Number_select({min:0,max:366,options:['day','month','year']}),
-  // 'Int Paymenet Period': tdtemplate.Number_select({min:0,max:366,options:['day','month','year']})
-};
+}
 
 export default function App() {
   return <Table data={tabledata} />;
