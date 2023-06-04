@@ -47,6 +47,10 @@ table td.calc-btn{
   text-align: center;
   border-left: 1px solid!important;
 }
+table td.calc-btn>button{
+  width: 100%;
+  height: 100%;
+}
 
 table td input:focus,
 table td select:focus {

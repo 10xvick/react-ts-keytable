@@ -143,8 +143,8 @@ export default function Table({ data }) {
                 const table =
                   e.target.parentElement.parentElement.parentElement;
 
-                for (let j=0; j<table,.rows.length;j++) {
-                  const row = rows[j];
+                for (let j=0; j<table.rows.length;j++) {
+                  const row = table.rows[j];
                   const key = row.children[0].innerText;
                   const value = [];
                   for (let i = 1; i < 3; i++) {
